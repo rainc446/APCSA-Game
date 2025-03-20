@@ -3,7 +3,7 @@ public class Level
     private boolean goalState;
     private int pointValue;
 
-    public void addPoints (int points) {
+    public void setPoints (int points) {
         pointValue += points;
     }
 
