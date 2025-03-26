@@ -13,11 +13,12 @@ public class Game
 
     private boolean bonusGame;
     /** Postcondition: All instance variables have been initialized. */
-    public Game()
+    public Game(int[] points, boolean[] goals, boolean bonus)
     {
-        levelOne = new Level();
-        levelTwo = new Level();
-        levelThree = new Level();
+        levelOne = new Level(points[0], goals[0]);
+        levelTwo = new Level(points[1], goals[1]);
+        levelThree = new Level(points[2], goals[2]);
+        bonusGame = bonus;
 
 
         /* implementation not shown */
@@ -68,13 +69,15 @@ public class Game
 
         if (isBonus()) return sum * 3;
         else return sum;
-        /* to be implemented in part (a) */ }
+        /* to be implemented in part (a) */
+    }
     /** Simulates the play of num games and returns the highest score earned, as
      * described in part (b)
      * Precondition: num > 0
      */
     public int playManyTimes(int num)
-    { /* to be implemented in part (b) */ }
+    { /* to be implemented in part (b) */
+    return  0;}
 
 // There may be instance variables, constructors, and methods that are not shown.
 }

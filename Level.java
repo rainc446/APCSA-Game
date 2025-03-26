@@ -3,6 +3,11 @@ public class Level
     private boolean goalState;
     private int pointValue;
 
+    public Level (int points, boolean goal) {
+        goalState = goal;
+        pointValue = points;
+    }
+
     public void setPoints (int points) {
         pointValue += points;
     }
