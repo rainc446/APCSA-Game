@@ -12,14 +12,11 @@ public class Level
         pointValue += points;
     }
 
-    public void setGoalState (boolean goalState) {
-        this.goalState = goalState;
-    }
-
     /** Returns true if the player reached the goal on this level and returns false otherwise */
     public boolean goalReached()
     {
         /* implementation not shown */
+        this.goalState = true;
         return goalState;
     }
     /** Returns the number of points (a positive integer) recorded for this level */
