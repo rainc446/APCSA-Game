@@ -6,15 +6,21 @@ public class Game
     private Level levelTwo;
     private Level levelThree;
     private boolean bonus;
+    private int points;
 
-    private boolean bonusGame;
     /** Postcondition: All instance variables have been initialized. */
+
+    public Game(){
+        levelOne = new Level();
+        levelTwo = new Level();
+        levelThree = new Level();
+    }
 
     /** Returns true if this game is a bonus game and returns false otherwise */
     public boolean isBonus()
     {
         /* implementation not shown */
-        return bonusGame;
+        return bonus;
     }
     public void setBonus() {
         bonus = true;
@@ -29,14 +35,29 @@ public class Game
         Scanner s = new Scanner((System.in));
         levelOne.setPoints(s.nextInt());
         levelOne.goalReached();
-        /* implementation not shown */
-        s.close();
-        System.out.println("Enter The number of points.");
     }
+
+    public Level getLevel(int level) {
+        if (level == 1) return levelOne;
+        if (level == 2) return levelTwo;
+        if (level == 3) return levelThree;
+        return null;
+    }
+
     /** Returns the score earned in the most recently played game, as described in part (a) */
     public int getScore()
     {
-        /* to be implemented in part (a) */
+        if (levelOne.getGoal()) {
+            points += levelOne.getPoints();
+            if (levelTwo.getGoal()) {
+                points += levelTwo.getPoints();
+                if (levelThree.getGoal()) {
+                    points += levelThree.getPoints();
+                }
+            }
+        }
+        if (isBonus()) {points *= 3;}
+        return points;
     }
     /** Simulates the play of num games and returns the highest score earned, as
      * described in part (b)
@@ -44,7 +65,21 @@ public class Game
      */
     public int playManyTimes(int num)
     { /* to be implemented in part (b) */
-    return  0;}
+        int score = 0;
+        int max = 0;
+        while (num > 0) {
+            play();
+            points = 0;
+            score = getScore();
+            if (score > max) max = score;
+            num--;
+        }
+        return max;
+    }
+
+    public void setBonus(boolean bonus) {
+        this.bonus = bonus;
+    }
 
 // There may be instance variables, constructors, and methods that are not shown.
 }
